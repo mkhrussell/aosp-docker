@@ -1,13 +1,17 @@
-version: "3.9"
+version: "3.3"
 services:
   builder:
     container_name: aosp_builder
-    hostname: aosp_builder
+    hostname: aosp-builder
     build: ./build
     restart: unless-stopped
     volumes: 
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - ./config/gitconfig:/home/aosp/.gitconfig:ro
-      - ~/aosp:/aosp:rw
-      - ~/ccache:/ccache:rw
+      - ~/.gitconfig:/home/ubuntu/.gitconfig:ro
+      - ~/.git-credentials:/home/ubuntu/.git-credentials:ro
+      - ~/.cache/ccache/:/ccache:rw
+      - /Developer/AOSP:/AOSP:rw
+
+    
+  
